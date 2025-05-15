@@ -1,0 +1,87 @@
+// Lattice FlatBuffers schema
+
+namespace Lattice;
+
+// Basic data types that can be stored
+union DataValue {
+  Int: Int,
+  Double: Double,
+  String: String,
+  Bool: Bool,
+  Timestamp: Timestamp,
+  Bytes: Bytes,
+  Array: Array,
+  Object: Object
+}
+
+table Int {
+  value:long;
+}
+
+table Double {
+  value:double;
+}
+
+table String {
+  value:string;
+}
+
+table Bool {
+  value:bool;
+}
+
+table Timestamp {
+  value:long; // Unix timestamp in milliseconds
+}
+
+table Bytes {
+  value:[ubyte];
+}
+
+table Array {
+  values:[DataValue];
+}
+
+table KeyValue {
+  key:string;
+  value:DataValue;
+}
+
+table Object {
+  fields:[KeyValue];
+}
+
+// Schema definition
+table Field {
+  name:string;
+  type:string;
+  nullable:bool = false;
+}
+
+table Schema {
+  name:string;
+  fields:[Field];
+}
+
+// Record represents a single data entry
+table Record {
+  id:string;
+  schema_id:string;
+  values:[DataValue];
+}
+
+// Collection of records
+table Collection {
+  name:string;
+  schema:Schema;
+  records:[Record];
+}
+
+// The root table containing all collections
+table Database {
+  name:string;
+  collections:[Collection];
+  version:string;
+}
+
+root_type Database;
