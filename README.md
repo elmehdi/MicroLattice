@@ -445,6 +445,7 @@ async function generateLatticeFile(db) {
   // Serialize and compress the Lattice database
   return latticeDB.serialize();
 }
+```
 
 ## Use Cases
 
@@ -473,8 +474,61 @@ See the `examples/` directory for complete examples:
 - `simple_example.py`: Basic usage of Lattice
 - `advanced_queries.py`: Demonstrates complex query capabilities
 - `schema_evolution.py`: Shows schema evolution in action
+- `sync_example.py`: Demonstrates synchronization between client and server
+- `benchmark.py`: Performance comparison with other storage methods
+
+## Future Improvements
+
+While Lattice is functional and ready for use, there are several areas for future improvement:
+
+### 1. Enhanced Querying Capabilities
+
+The current implementation includes basic succinct data structures (BitVector, WaveletTree) for efficient querying, but could be enhanced with:
+
+- **Full-text search**: Implement inverted indices for text search
+- **Spatial queries**: Add support for geospatial data and queries
+- **Aggregation functions**: Support for count, sum, average, etc.
+- **Query optimization**: Implement cost-based query planning
+
+### 2. Improved Schema Definition
+
+The current schema system uses a simple dictionary-based approach. Future improvements could include:
+
+- **Complete FlatBuffers integration**: Generate code from schemas for type safety
+- **Schema validation**: More robust validation of data against schemas
+- **Cross-language support**: Generate schemas for multiple programming languages
+- **JSON Schema support**: Allow defining schemas using JSON Schema
+
+### 3. Enhanced Documentation
+
+Future documentation improvements could include:
+
+- **API reference**: Complete documentation of all classes and methods
+- **Tutorial series**: Step-by-step guides for common use cases
+- **Architecture diagrams**: Visual explanations of how Lattice works
+- **Video tutorials**: Screencasts demonstrating Lattice in action
+
+### 4. Additional Features
+
+Other potential features for future versions:
+
+- **Encryption**: Support for encrypting sensitive data
+- **Compression options**: Allow choosing different compression algorithms
+- **Streaming support**: Process large datasets without loading everything into memory
+- **Reactive queries**: Subscribe to changes in query results
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Here are some ways you can contribute:
 
+1. **Implement new features**: Pick one of the future improvements and implement it
+2. **Fix bugs**: Help identify and fix issues
+3. **Improve documentation**: Add examples, clarify explanations, fix typos
+4. **Write tests**: Increase test coverage and add new test cases
+5. **Share use cases**: Let us know how you're using Lattice
+
+Please feel free to submit a Pull Request or open an Issue to discuss improvements.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
